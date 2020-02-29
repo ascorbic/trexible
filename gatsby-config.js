@@ -22,13 +22,19 @@ module.exports = {
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
-    'gatsby-transformer-remark',
     {
-      resolve: `@raae/gatsby-remark-oembed`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        providers: {
-          include: ['YouTube'],
-        },
+        plugins: [
+          {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              providers: {
+                exclude: ['Twitter', 'Flickr', 'Instagram', 'Reddit'],
+              },
+            },
+          },
+        ],
       },
     },
     'gatsby-transformer-sharp',
