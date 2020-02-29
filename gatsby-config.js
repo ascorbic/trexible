@@ -1,11 +1,11 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  host: process.env.CONTENTFUL_HOST
+  host: process.env.CONTENTFUL_HOST,
 }
 
 const { spaceId, accessToken } = contentfulConfig
@@ -23,12 +23,20 @@ module.exports = {
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
     'gatsby-transformer-remark',
+    {
+      resolve: `@raae/gatsby-remark-oembed`,
+      options: {
+        providers: {
+          include: ['YouTube'],
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
-    }
+    },
   ],
 }
