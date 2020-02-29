@@ -18,6 +18,11 @@
   width: 100px;
 }
 
+.logo img {
+  animation: shake 0.5s;
+  animation-iteration-count: 3;
+}
+
 .logo img:hover,
 .logo img:active {
   animation: shake 0.5s;
