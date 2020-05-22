@@ -26,7 +26,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images/`
+        path: `${__dirname}/src/images/`,
       },
     },
     {
@@ -50,6 +50,17 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `TRexible`,
+        short_name: `TRexible`,
+        icon: `src/images/icon.png`,
+        start_url: `/`,
+        theme_color: `#000`,
+        display: `standalone`,
+      },
     },
   ],
 }
