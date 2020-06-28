@@ -5,7 +5,6 @@ import Img from 'gatsby-image'
 import styles from './article-preview.module.css'
 
 export default ({ article }) =>{ 
-  console.log(article.description.childMarkdownRemark.html)
   return (
   <div className={styles.preview}>
     <Link to={`/blog/${article.slug}`}><Img alt="" fluid={article.heroImage.fluid} /></Link>

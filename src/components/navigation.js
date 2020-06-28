@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useStaticQuery } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import Img from "gatsby-image"
 import styles from './navigation.module.css'
 
@@ -15,7 +15,6 @@ export default () => {
       }
     }
   `)
-  console.log(image)
   return (
     <nav role="navigation" className={styles.wrap}>
       <Link to={'/'} className={styles.logo}>
