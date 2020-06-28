@@ -9,7 +9,7 @@ export default () => {
       file(relativePath: { eq: "trex.png" }) {
         childImageSharp {
           fixed(height: 100) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_tracedSVG
           }
         }
       }

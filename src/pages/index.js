@@ -1,37 +1,34 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Hero from '../components/hero'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
-class RootIndex extends React.Component {
-  render() {
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const posts = this.props.data.allContentfulBlogPost.edges
-    const [author] = this.props.data.allContentfulPerson.edges
+export const RootIndex = ({ data, location }) => {
+  const siteTitle = data?.site?.siteMetadata?.title
+  const posts = data?.allContentfulBlogPost?.edges
+  const [author] = data?.allContentfulPerson?.edges
 
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+  return (
+    <Layout location={location}>
+      <div style={{ background: '#fff' }}>
+        <Helmet title={siteTitle} />
+        <Hero data={author.node} />
+        <div className="wrapper">
+          <ul className="article-list">
+            {posts.map(({ node }) => {
+              return (
+                <li key={node.slug}>
+                  <ArticlePreview article={node} />
+                </li>
+              )
+            })}
+          </ul>
         </div>
-      </Layout>
-    )
-  }
+      </div>
+    </Layout>
+  )
 }
 
 export default RootIndex
