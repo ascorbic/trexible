@@ -5,19 +5,20 @@ import Hero from '../components/hero'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
-export const RootIndex = ({ data, location }) => {
+const RootIndex = ({ data, location }) => {
   const siteTitle = data?.site?.siteMetadata?.title
   const posts = data?.allContentfulBlogPost?.edges
-  const [author] = data?.allContentfulPerson?.edges
+  const author = data?.contentfulPerson
 
   return (
     <Layout location={location}>
       <div style={{ background: '#fff' }}>
         <Helmet title={siteTitle} />
-        <Hero data={author.node} />
+        <Hero data={author} />
         <div className="wrapper">
           <ul className="article-list">
             {posts.map(({ node }) => {
+              console.log(node)
               return (
                 <li key={node.slug}>
                   <ArticlePreview article={node} />
@@ -48,9 +49,12 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
-            }
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 350
+              height: 196
+              resizingBehavior: FILL
+            )
           }
           description {
             childMarkdownRemark {
@@ -60,27 +64,19 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      edges {
-        node {
-          name
-          shortBio {
-            shortBio
-          }
-          title
-          heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid
-            }
-          }
-        }
+    contentfulPerson(contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" }) {
+      name
+      shortBio {
+        shortBio
+      }
+      title
+      heroImage: image {
+        gatsbyImageData(
+          height: 480
+          layout: FULL_WIDTH
+          resizingBehavior: PAD
+          backgroundColor: "rgb:000000"
+        )
       }
     }
   }
