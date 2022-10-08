@@ -20,7 +20,7 @@ class BlogPostTemplate extends React.Component {
             <GatsbyImage
               className={heroStyles.heroImage}
               alt={post.title}
-              image={post.heroImage.gatsbyImageData}
+              image={post.heroImage?.gatsbyImageData}
             />
           </div>
           <div className="wrapper">
