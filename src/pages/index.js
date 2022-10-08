@@ -18,7 +18,6 @@ const RootIndex = ({ data, location }) => {
         <div className="wrapper">
           <ul className="article-list">
             {posts.map(({ node }) => {
-              console.log(node)
               return (
                 <li key={node.slug}>
                   <ArticlePreview article={node} />
