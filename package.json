@@ -14,7 +14,7 @@
     "gatsby-plugin-react-helmet": "5.24.0",
     "gatsby-plugin-sharp": "4.24.0",
     "gatsby-source-contentful": "7.22.0",
-    "gatsby-transformer-remark": "5.24.0",
+    "gatsby-transformer-remark": "5.25.1",
     "gatsby-transformer-sharp": "4.24.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
