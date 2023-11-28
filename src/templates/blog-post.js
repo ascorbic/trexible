@@ -57,7 +57,7 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED, width: 1180)
       }
       body {
         childMarkdownRemark {

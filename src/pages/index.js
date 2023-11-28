@@ -70,12 +70,7 @@ export const pageQuery = graphql`
       }
       title
       heroImage: image {
-        gatsbyImageData(
-          height: 480
-          layout: FULL_WIDTH
-          resizingBehavior: PAD
-          backgroundColor: "rgb:000000"
-        )
+        gatsbyImageData(layout: CONSTRAINED, width: 1180)
       }
     }
   }
